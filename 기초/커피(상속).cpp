@@ -32,5 +32,19 @@ int main() {
 	Latte latte1("카페라떼");
 	latte1.taste(); // Latte 클래스의 taste() 함수 호출 (이미 함수에 출력코드가 있으므로 호출만 함!!)
 
+	Coffee* mydrink1 = new Latte("카페모카"); //Coffee* mydrink1은 mydrink1에 Coffee나 그 자식 객체의 주소를 저장할 수 있음 (컵 개념)
+	mydrink1->taste(); // Latte 클래스의 taste() 함수 호출 (이미 함수에 출력코드가 있으므로 호출만 함!!) (만약 new Coffee 였다면 Coffee의 taste()함수가 호출됨)
+	delete mydrink1; //동적할당한 메모리 해제
+
+	Coffee* cafe[3]; // 커피 컵 3개를 준비!
+	cafe[0] = new Coffee("아메리카노");
+	cafe[1] = new Latte("바닐라라떼");
+	cafe[2] = new Latte("초코라떼");
+
+	for (int i = 0; i < 3; i++) {
+		cafe[i]->taste(); // 종류가 달라도 한 번에 맛을 볼 수 있음!
+		delete cafe[i]; //동적할당한 메모리 해제
+	}
+	
 	return 0;
 }
